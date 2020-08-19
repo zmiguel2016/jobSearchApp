@@ -16,7 +16,8 @@ export default function Job({job}) {
             location: job.location,
             apply: job.how_to_apply,
             id: job.id,
-            status: " "
+            status: " ",
+            date: " "
         })
         .then(function() {
             console.log("Document successfully written!");
@@ -51,17 +52,15 @@ export default function Job({job}) {
                     <Button 
                     onClick={() => setOpen(prevOpen => !prevOpen)}
                     variant="primary"> {open ? 'Hide Details' : 'View Details'}</Button>
+                    <Button className = "mg-2" onClick ={() => jobQueue(job)}>
+                        Add to jobs list
+                    </Button>
                 </Card.Text>
                 <Collapse in={open}>
                 <div className="mt-4">
                     <ReactMarkdown source={job.description}/>
                 </div>
                 </Collapse>
-                <Card.Text>
-                    <Button onClick ={() => jobQueue(job)}>
-                        Add to jobs list
-                    </Button>
-                </Card.Text>
             </Card.Body>
         </Card>
            

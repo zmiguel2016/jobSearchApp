@@ -21,7 +21,7 @@ export default function MyJobList(){
         <Container className="my-4">
         <div className="my-4">
             <h1>My Jobs</h1>
-            <Button href="/jobslist" className="mb-4">my jobs</Button>
+            <Button href="/jobslist" className="mb-4">Jobs list</Button>
             <ul>
             {jobs.map(job => {
                return <UserJobs key={job.id} job={job}/>

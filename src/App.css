@@ -1,8 +1,7 @@
 html, body{
   background-color: rgb(218, 214, 214);
 }
-.titleContainer{
-  
+.titleContainer{  
   flex-direction: column;
   justify-content: center;
   align-items: center;

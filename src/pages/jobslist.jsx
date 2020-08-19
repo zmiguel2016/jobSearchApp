@@ -20,7 +20,7 @@ function JobsList(){
   return(
     <Container className="my-4">
       <h1 className="mb-4">GitHub job search</h1>
-      <Button href="/myjobs">my jobs</Button>
+      <Button href="/myjobs">My Jobs</Button>
       <SearchForm params={params} onParamChange= {handleParamChange} />
       <JobsPagination page={page} setPage={setPage} hasNextPage={hasNextPage}/>
       {loading && <h1>Loading...</h1>}
