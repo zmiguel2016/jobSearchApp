@@ -2,14 +2,17 @@ import React, {useState} from 'react'
 import { Card, Badge, Button, Collapse } from 'react-bootstrap'
 import ReactMarkdown from 'react-markdown'
 import firebase from './firebase'
+import getUser from "./Auth"
+
 
 export default function Job({job}) {
     const [open, setOpen] = useState(false)
     
     function jobQueue(job){
-        //console.log(job)
+        console.log(getUser().uid)
+        
         const db = firebase.firestore()
-        db.collection("jobs").doc(job.id).set({
+        db.collection("users").doc(getUser().uid).collection("jobs").doc(job.id).set({
             title: job.title,
             company: job.company,
             company_url: job.company_url,
@@ -24,7 +27,7 @@ export default function Job({job}) {
         })
         .catch(function(error) {
             console.error("Error writing document: ", error);
-        });
+        }); 
     }
     return(
         <Card className = "mb-3">

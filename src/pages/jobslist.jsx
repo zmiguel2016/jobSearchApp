@@ -4,6 +4,7 @@ import { Container, Button } from 'react-bootstrap'
 import Job from '../Job'
 import JobsPagination from '../JobsPagination';
 import SearchForm from '../SearchForm';
+import firebase from "../firebase"
 
 function JobsList(){
     const [params, setParams] = useState({})
@@ -19,7 +20,12 @@ function JobsList(){
   }
   return(
     <Container className="my-4">
-      <h1 className="mb-4">GitHub job search</h1>
+      <div className="d-flex justify-content-between">
+            <h1>Jobs List</h1>
+            <div >
+            <Button  className ="d-md-block"  onClick={() => firebase.auth().signOut()}>Sign out</Button>
+            </div>
+            </div>
       <Button href="/myjobs">My Jobs</Button>
       <SearchForm params={params} onParamChange= {handleParamChange} />
       <JobsPagination page={page} setPage={setPage} hasNextPage={hasNextPage}/>

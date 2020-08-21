@@ -4,14 +4,15 @@ import firebase from './firebase'
 import DatePicker from "react-datepicker"
 import ReactMarkdown from 'react-markdown'
 import "react-datepicker/dist/react-datepicker.css";
-
-
+import getUser from "./Auth"
 
 export default function UserJobs({job}) {
 
     const [startDate, setStartDate] = useState(null)
+
+   
     const CustomInput = forwardRef(({value, onClick},ref) => (
-        <Button variant="outline-dark" ref={ref }onClick={onClick}>Update Date
+        <Button variant="outline-dark" ref={ref } onClick={onClick}>Update Date
           {value}
         </Button>
       ));
@@ -19,7 +20,7 @@ export default function UserJobs({job}) {
    const handleChange = (val) => changeStatus(val)
     function changeStatus(val){
         const db = firebase.firestore()
-        db.collection("jobs").doc(job.id).update({
+        db.collection(`users/${getUser().uid}/jobs`).doc(job.id).update({
             status: val.target.value
         })
         .then(function() {
@@ -35,7 +36,7 @@ export default function UserJobs({job}) {
    // const dateF = moment(val).format('DD MMM YYYY')
    const dateF = new Date(val).toLocaleDateString()
     const db = firebase.firestore()
-    db.collection("jobs").doc(job.id).update({
+    db.collection(`users/${getUser().uid}/jobs`).doc(job.id).update({
         date: dateF
     })
     .then(function() {
@@ -45,8 +46,20 @@ export default function UserJobs({job}) {
     .catch(function(error) {
         console.error("Error writing document: ", error);
     }); 
-    
     }
+
+    function deleteJob(){
+    const db = firebase.firestore()
+    db.collection(`users/${getUser().uid}/jobs`).doc(job.id).delete()
+    .then(function() {
+        console.log("Document successfully written!");
+        window.location.reload(false);
+    })
+    .catch(function(error) {
+        console.error("Error writing document: ", error);
+    }); 
+    }
+        
     return(
         <Card className = "mb-3">
             <Card.Body>
@@ -57,19 +70,30 @@ export default function UserJobs({job}) {
                          font-weight-light">{job.company}</span>
                         </Card.Title>
                         <Badge variant= "secondary">{job.location}</Badge>
-                        <Card.Text>
+                            <div style={{wordBreak: 'break-all'}}>
                             <ReactMarkdown source = {job.company_url}/>
-                           <ReactMarkdown source ={job.apply}/>
-                        </Card.Text>
+                            <ReactMarkdown source ={job.apply}/>
+                           </div>
+                        
+                    </div>
+                    <div>
+                    <Button className = "d-md-block" height="50" variant="outline-danger" onClick= { () => deleteJob()}>Delete</Button>
                     </div>
                 </div>
+                
+
+                
+                
 
         <div>
+        
             <Form>
                 <Form.Group controlId="statusid">
                 <Form.Row>   
                 <Col xs="auto" className="my-1">
-                    <Form.Label>Status: {job.status}</Form.Label>
+                <Form.Label>Status: {job.status}</Form.Label>
+                
+
                     <Form.Control as="select" defaultValue="Update Status" onChange= {handleChange}>
                     <option>Update Status</option>  
                     <option>Applying</option>  

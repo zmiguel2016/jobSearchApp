@@ -1,17 +1,20 @@
-import React, {useState} from 'react'
-import { Card, Badge, Button, Collapse, Container } from 'react-bootstrap'
-import ReactMarkdown from 'react-markdown'
-import JobsPagination from '../JobsPagination';
-import SearchForm from '../SearchForm';
+import React from 'react'
+import { Button, Container } from 'react-bootstrap'
 import firebase from '../firebase'
 import UserJobs from '../UserJobs'
+import getUser from "../Auth"
+
 
 export default function MyJobList(){
+
+    const [isShowing, setIsShowing] = React.useState(false);
+    const closeModalHandler = () => setIsShowing(false);
+
     const [jobs, setJobs] = React.useState([])
     React.useEffect(() => {
         const fetchData = async () => {
             const db = firebase.firestore()
-            const data = await db.collection("jobs").get()
+            const data = await db.collection(`users/${getUser().uid}/jobs`).get()
             setJobs(data.docs.map(doc => doc.data()))
         }
         fetchData()
@@ -19,8 +22,15 @@ export default function MyJobList(){
     
     return(
         <Container className="my-4">
-        <div className="my-4">
+        <div>
+            <div className="d-flex justify-content-between">
             <h1>My Jobs</h1>
+            <div >
+            
+            <Button  className ="d-md-block"  onClick={() => firebase.auth().signOut()}>Sign out</Button>
+            </div>
+            </div>
+        
             <Button href="/jobslist" className="mb-4">Jobs list</Button>
             <ul>
             {jobs.map(job => {
@@ -28,6 +38,8 @@ export default function MyJobList(){
             })}
         </ul>
         </div>
+        
+       
         </Container>
     )
 }
