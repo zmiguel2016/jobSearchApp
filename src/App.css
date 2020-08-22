@@ -17,3 +17,14 @@ html, body{
 .btn{
   margin: 1px;
 }
+
+.modalBackground {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.modalShowing-true {
+  opacity: 1;
+  pointer-events: visible;
+}
