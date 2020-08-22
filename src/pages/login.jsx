@@ -29,18 +29,22 @@ const Login = ({ history }) => {
 
   return (
     <Card className = "mb-3"> 
-      <Card.Body>
+      <Card.Body className="loginbody">
     <div>
       <h1>Log in</h1>
       <Form onSubmit={handleLogin}>
+      <Form.Label>Email</Form.Label>
+        <div>
         <Form.Label>
-          Email
           <input name="email" type="email" placeholder="Email" />
         </Form.Label>
+        </div>
+        <Form.Label>Password</Form.Label>
+        <div>
         <Form.Label>
-          Password
           <input name="password" type="password" placeholder="Password" />
         </Form.Label>
+        </div>
         <Button type="submit">Log in</Button>
       </Form>
     </div>

@@ -6,10 +6,10 @@ export default function startUpPage(){
     return(
         <Container>
         <div className="titleContainer">
-            <h1 className="title">My Job Search Tracker</h1>
+            <h1 className="title mb-2">My Job Hunt Tracker</h1>
             <div>
                 <Button className="btn" href="/signup">
-             Sign up to Begin</Button>
+             Sign up to begin</Button>
            
         </div>
         </div>

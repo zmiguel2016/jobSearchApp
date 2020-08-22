@@ -1,5 +1,5 @@
 html, body{
-  background-color: rgb(218, 214, 214);
+  background-color: rgb(255, 255, 255);
 }
 .titleContainer{  
   flex-direction: column;
@@ -16,6 +16,16 @@ html, body{
 
 .btn{
   margin: 1px;
+}
+
+.loginbody{
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  width: 100%;
 }
 
 .modalBackground {

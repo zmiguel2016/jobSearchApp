@@ -57,7 +57,7 @@ function MyModal(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Modal heading
+            New Job Form
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -125,7 +125,7 @@ export default function MyJobList(){
             <Button href="/jobslist" className="mb-4">Jobs list</Button>
             
 
-            <Button variant="primary" onClick={() => setModalShow(true)}>Add new Job</Button>
+            <Button className="mb-4" variant="primary" onClick={() => setModalShow(true)}>Add new Job</Button>
 
             <MyModal
                 show={modalShow}

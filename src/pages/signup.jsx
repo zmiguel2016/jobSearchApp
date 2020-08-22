@@ -2,6 +2,7 @@ import React, { useCallback } from "react";
 import { withRouter } from "react-router";
 import { Card, Button, Form } from 'react-bootstrap'
 import firebase from "../firebase"
+import "../App.css"
 
 const SignUp = ({ history }) => {
   const handleSignUp = useCallback(async event => {
@@ -20,18 +21,22 @@ const SignUp = ({ history }) => {
 
   return (
     <Card className = "mb-3"> 
-      <Card.Body>
+      <Card.Body className="loginbody">
     <div>
       <h1>Sign up</h1>
       <Form onSubmit={handleSignUp}>
+        <Form.Label>Email</Form.Label>
+        <div>
         <Form.Label>
-          Email
           <input name="email" type="email" placeholder="Email" />
         </Form.Label>
+        </div>
+        <Form.Label>Password</Form.Label>
+        <div>
         <Form.Label>
-          Password
           <input name="password" type="password" placeholder="Password" />
         </Form.Label>
+        </div>
         <Button type="submit">Sign up</Button>
       </Form>
     </div>
