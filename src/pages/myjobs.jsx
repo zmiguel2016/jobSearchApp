@@ -27,7 +27,7 @@ function MyModal(props) {
   const handleSubmit = (e) => {
     e.preventDefault()
     let randomId = Math.random().toString(36).substr(2, 5);
-    console.log(formData);
+    //console.log(formData);
     const db = firebase.firestore()
     db.collection(`users/${getUser().uid}/jobs`).doc(randomId).set({
             title: formData.title,
@@ -94,9 +94,7 @@ function MyModal(props) {
     );
   }
 
-  function formSubmit(event){
-      console.log(event.value.data)
-  }
+  
 
 export default function MyJobList(){
     const [modalShow, setModalShow] = React.useState(false);

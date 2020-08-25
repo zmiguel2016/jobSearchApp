@@ -8,9 +8,7 @@ import getUser from "./Auth"
 export default function Job({job}) {
     const [open, setOpen] = useState(false)
     
-    function jobQueue(job){
-        console.log(getUser().uid)
-        
+    function jobQueue(job){ 
         const db = firebase.firestore()
         db.collection("users").doc(getUser().uid).collection("jobs").doc(job.id).set({
             title: job.title,

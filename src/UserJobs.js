@@ -25,7 +25,7 @@ export default function UserJobs({job}) {
         })
         .then(function() {
             console.log("Document successfully written!");
-            window.location.reload(false);
+            //window.location.reload(false);
         })
         .catch(function(error) {
             console.error("Error writing document: ", error);
@@ -33,7 +33,6 @@ export default function UserJobs({job}) {
     }
 
    function changeDate(val) {
-   // const dateF = moment(val).format('DD MMM YYYY')
    const dateF = new Date(val).toLocaleDateString()
     const db = firebase.firestore()
     db.collection(`users/${getUser().uid}/jobs`).doc(job.id).update({
