@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Container, Modal, Form } from 'react-bootstrap'
 import firebase from '../firebase'
 import UserJobs from '../UserJobs'
@@ -18,7 +18,6 @@ function MyModal(props) {
   const handleChange = (e) => {
     updateFormData({
       ...formData,
-
       // Trimming any whitespace
       [e.target.name]: e.target.value.trim()
     });
@@ -109,6 +108,13 @@ export default function MyJobList(){
         fetchData()
     },[])
     
+    const sortedJobs = jobs.sort(function compare(a, b) {
+      var time_a = Date.parse(a.date.replace(/-/g, '/').replace('T', ' ').replace(/\..*|\+.*/, ''));
+        var time_b = Date.parse(b.date.replace(/-/g, '/').replace('T', ' ').replace(/\..*|\+.*/, ''));
+      return  time_b - time_a;
+    });
+  
+    
     return(
         <Container className="my-4">
         <div>
@@ -132,7 +138,7 @@ export default function MyJobList(){
 
             
             <ul>
-            {jobs.map(job => {
+            {sortedJobs.map(job => {
                return <UserJobs key={job.id} job={job}/>
             })}
         </ul>

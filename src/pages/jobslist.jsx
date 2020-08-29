@@ -28,6 +28,7 @@ function JobsList(){
             </div>
       <Button href="/myjobs">My Jobs</Button>
       <SearchForm params={params} onParamChange= {handleParamChange} />
+      
       <JobsPagination page={page} setPage={setPage} hasNextPage={hasNextPage}/>
       {loading && <h1>Loading...</h1>}
       {error && <h1>Error. Refresh the page.</h1>}

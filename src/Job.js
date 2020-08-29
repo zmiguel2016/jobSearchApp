@@ -1,12 +1,15 @@
 import React, {useState} from 'react'
-import { Card, Badge, Button, Collapse } from 'react-bootstrap'
+import { Card, Badge, Button, Collapse, Alert } from 'react-bootstrap'
 import ReactMarkdown from 'react-markdown'
 import firebase from './firebase'
 import getUser from "./Auth"
+import { render } from '@testing-library/react'
+
 
 
 export default function Job({job}) {
     const [open, setOpen] = useState(false)
+    
     
     function jobQueue(job){ 
         const db = firebase.firestore()
@@ -21,13 +24,18 @@ export default function Job({job}) {
             date: " "
         })
         .then(function() {
-            console.log("Document successfully written!");
+            alert('Job was added to your list')
         })
         .catch(function(error) {
+            alert("Error refresh page")
             console.error("Error writing document: ", error);
         }); 
     }
+
+    
+
     return(
+        
         <Card className = "mb-3">
             <Card.Body>
                 <div className="d-flex justify-content-between">

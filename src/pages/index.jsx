@@ -12,6 +12,11 @@ export default function startUpPage(){
              Sign up to begin</Button>
            
         </div>
+        <br></br>
+        <div>
+            <a href='/login'>Already have an account? Login</a>
+           
+        </div>
         </div>
         
         </Container>
