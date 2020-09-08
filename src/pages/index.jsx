@@ -17,6 +17,12 @@ export default function startUpPage(){
             <a href='/login'>Already have an account? Login</a>
            
         </div>
+        <br></br>
+        <div>
+            <p>To test application, login in with Email: test@email.com 
+                Password: 123456
+            </p>
+        </div>
         </div>
         
         </Container>

@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
-import { Card, Badge, Button, Collapse, Alert } from 'react-bootstrap'
+import { Card, Badge, Button, Collapse } from 'react-bootstrap'
 import ReactMarkdown from 'react-markdown'
 import firebase from './firebase'
 import getUser from "./Auth"
-import { render } from '@testing-library/react'
+
 
 
 
