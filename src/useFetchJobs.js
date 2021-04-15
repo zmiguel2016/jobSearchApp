@@ -10,7 +10,7 @@ const ACTIONS = {
 };
 
 const BASE_URL =
-  "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json"; //api endpoint   added cors to bypass cors restrictions
+  "https://lit-waters-27528.herokuapp.com/https://jobs.github.com/positions.json"; //api endpoint   added cors to bypass cors restrictions
 
 //state reducer
 function reducer(state, action) {

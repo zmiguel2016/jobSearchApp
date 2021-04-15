@@ -1,24 +1,24 @@
-html, body{
+html,
+body {
   background-color: rgb(255, 255, 255);
 }
-.titleContainer{  
+.titleContainer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
   display: flex;
   height: 100vh;
   width: 100%;
-  
 }
-.title{
+.title {
   text-align: center;
 }
 
-.btn{
+.btn {
   margin: 1px;
 }
 
-.loginbody{
+.loginbody {
   flex-direction: column;
   justify-content: center;
   text-align: center;
@@ -37,4 +37,7 @@ html, body{
 .modalShowing-true {
   opacity: 1;
   pointer-events: visible;
+}
+.addbtn {
+  margin-left: 10px;
 }

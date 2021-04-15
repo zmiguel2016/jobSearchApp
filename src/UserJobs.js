@@ -9,6 +9,7 @@ import getUser from "./Auth";
 //cards for user jobs list
 export default function UserJobs({ job }) {
   const [startDate, setStartDate] = useState(null);
+  const [status, setStatus] = useState(job.status);
 
   //custom date button
   const CustomInput = forwardRef(({ value, onClick }, ref) => (
@@ -21,6 +22,7 @@ export default function UserJobs({ job }) {
   //handle status change
   const handleChange = (val) => changeStatus(val);
   function changeStatus(val) {
+    setStatus(val.target.value);
     //update database with new status value
     const db = firebase.firestore();
     db.collection(`users/${getUser().uid}/jobs`)
@@ -103,7 +105,7 @@ export default function UserJobs({ job }) {
             <Form.Group controlId="statusid">
               <Form.Row>
                 <Col xs="auto" className="my-1">
-                  <Form.Label>Status: {job.status}</Form.Label>
+                  <Form.Label>Status: {status}</Form.Label>
 
                   <Form.Control
                     as="select"

@@ -22,8 +22,8 @@ function MyModal(props) {
         company_url: url.value,
         location: location.value,
         id: randomId,
-        status: " ",
-        date: " ",
+        status: "Applying",
+        date: new Date().toLocaleDateString(),
       })
       .then(function () {
         window.location.reload(false); //reloads page to update new jobs
@@ -143,8 +143,8 @@ export default function MyJobList() {
         </Button>
 
         <Button
-          className="mb-4"
-          variant="primary"
+          className="mb-4 addbtn"
+          variant="outline-success"
           onClick={() => setModalShow(true)} //open new job form
         >
           Add new Job
